@@ -58,7 +58,6 @@ class BaseModel:
         }
         # update with instance attributes stored under the hood
         my_dict.update(self.__dict__)
-        my_dict["__class__"] = self.__class__.__name__
 
         if my_dict["created_at"] is not None:
             my_dict["created_at"] = self.created_at.isoformat()
