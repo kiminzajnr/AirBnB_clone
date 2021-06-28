@@ -34,9 +34,10 @@ class BaseModel:
                 self.updated_at = datetime.utcnow()
             if kwargs["id"] is None:
                 self.id = str(uuid.uuid4())
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow()
-        self.updated_at = self.created_at
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.utcnow()
+            self.updated_at = datetime.utcnow()
 
     def __str__(self):
         """print formated string"""
