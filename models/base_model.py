@@ -4,16 +4,11 @@ This module defines all common attributes/methods for other classes
 """
 import uuid
 from datetime import datetime
+from models.__init__ import storage
 
 
 class BaseModel:
     """The Base class"""
-    def __init__(self, id=None, created_at=None, updated_at=None):
-        """initialization of public instance attributes"""
-        self.id = uuid.uuid4()
-        self.created_at = datetime.utcnow()
-        self.updated_at = datetime.utcnow()
-
     def __init__(self, *args, **kwargs):
         """constructor of a base model"""
         if kwargs:
@@ -38,6 +33,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
             self.updated_at = datetime.utcnow()
+            storage.new(self.to_dict())
 
     def __str__(self):
         """print formated string"""
@@ -50,6 +46,8 @@ class BaseModel:
         updated_at with the current datetime"""
         if self.updated_at is not datetime.now():
             self.updated_at = datetime.now()
+        storage.new(self.to_dict())
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values
