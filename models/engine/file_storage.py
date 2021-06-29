@@ -2,7 +2,7 @@
 """A storage moudle.
 """
 import json
-
+import models
 
 class FileStorage:
     """A class that serializes instances to a JSON file and deserilaizes
@@ -14,11 +14,10 @@ class FileStorage:
     def all(self):
         """Return the dictionary objects
         """
-        from models.base_model import BaseModel
         obj_dict = {}
         for key in __class__.__objects.keys():
             obj = __class__.__objects[key]
-            obj_dict[key] = BaseModel(**obj)
+            obj_dict[key] = models.base_model.BaseModel(**obj)
         return obj_dict
 
     def new(self, obj):
