@@ -4,6 +4,7 @@
 import json
 import models
 
+
 class FileStorage:
     """A class that serializes instances to a JSON file and deserilaizes
     JSON file to instances.
