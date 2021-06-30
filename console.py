@@ -29,7 +29,9 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
-        """ Creates a new instance of BaseModel, saves it (to the JSON file)
+        """ Usage: create BaseModel
+
+        Creates a new instance of BaseModel, saves it (to the JSON file)
         and prints the id.
         """
         args = line.split(" ")
@@ -72,10 +74,10 @@ class HBNBCommand(cmd.Cmd):
         if args[0] == "BaseModel":
             if len(args) > 1:
                 key = args[0] + "." + args[1]
-                if (storage.all()).pop(key, None) == None:
+                if (storage.all()).pop(key, None) is None:
                     print("** no instance found **")
                 else:
-                    storage.all()[key].save()
+                    models.base_model.storage.all()[key].save()
             else:
                 print("** instance id missing **")
         elif args[0] == "":
@@ -109,18 +111,18 @@ class HBNBCommand(cmd.Cmd):
         elif len(args) == 1:
             print("** instance id missing **")
         else:
-             key = args[0] + "." + args[1]
-             all_objs = storage.all()
-             if key in all_objs.keys():
-                 if len(args) == 2:
-                     print("** attribute name missing **")
-                 elif len(args) == 3:
-                     print("** value missing **")
-                 else:
-                     setattr(storage.all()[key], args[2], args[3])
-                     storage.all()[key].save()
-             else:
-                 print("** no instance found **")
+            key = args[0] + "." + args[1]
+            all_objs = storage.all()
+            if key in all_objs.keys():
+                if len(args) == 2:
+                    print("** attribute name missing **")
+                elif len(args) == 3:
+                    print("** value missing **")
+                else:
+                    setattr(storage.all()[key], args[2], args[3])
+                    storage.all()[key].save()
+            else:
+                print("** no instance found **")
 
 
 if __name__ == '__main__':
