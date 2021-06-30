@@ -32,7 +32,7 @@ class BaseModel:
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.utcnow()
-            self.updated_at = datetime.utcnow()
+            self.updated_at = self.created_at
             models.storage.new(self.to_dict())
 
     def __str__(self):
