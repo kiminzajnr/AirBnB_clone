@@ -71,6 +71,8 @@ class HBNBCommand(cmd.Cmd):
         into the JSON file).
         """
         args = line.split(" ")
+        if len(args) == 0:
+            print("** class name missing **")
         if args[0] == "BaseModel":
             if len(args) > 1:
                 key = args[0] + "." + args[1]
@@ -81,8 +83,6 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
             else:
                 print("** instance id missing **")
-        elif args[0] == "":
-            print("** class name missing **")
         else:
             print("** class doesn't exist **")
 
