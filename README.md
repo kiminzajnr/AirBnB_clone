@@ -7,6 +7,7 @@ A python command interpreter program built using the python module cmd. Contains
 ## Usage
 Help for the console program can be obtained by running the program first and with the help command. This will show the available commands:
 
+```bash
 Documented commands (type help <topic>):
 ========================================
 EOF  all  create  destroy  help  quit  show  update
@@ -19,6 +20,7 @@ Usage: create BaseModel
 
         Creates a new instance of BaseModel, saves it (to the JSON file)
         and prints the id.
+```
 
 ## Usage and Examples
 
