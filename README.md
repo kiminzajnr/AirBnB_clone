@@ -14,7 +14,6 @@ EOF  all  create  destroy  help  quit  show  update
 You can get help for specific command by specifing help <command>. For example
 
 (htnb) help create
-
 Usage: create BaseModel
 
         Creates a new instance of BaseModel, saves it (to the JSON file)
