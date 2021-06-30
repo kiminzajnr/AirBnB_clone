@@ -6,6 +6,7 @@ import unittest
 from models.base_model import BaseModel
 from datetime import datetime
 
+
 class TestBaseModel(unittest.TestCase):
     """tests for the base class"""
 
@@ -37,8 +38,8 @@ class TestBaseModel(unittest.TestCase):
         my_model.my_number = 89
         self.assertEqual(str(my_model),
                          '[{}] ({}) {}'.format(my_model.__class__.__name__,
-                                     my_model.id,
-                                     my_model.__dict__))
+                                               my_model.id,
+                                               my_model.__dict__))
 
     def test_kwargs(self):
         """Test basemodel is created correctly from dictionay.
