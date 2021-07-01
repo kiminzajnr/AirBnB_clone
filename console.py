@@ -75,6 +75,8 @@ class HBNBCommand(cmd.Cmd):
                 objs_dict = storage.all()
                 if objs_dict.pop(key, None) is None:
                     print("** no instance found **")
+                else:
+                    storage.save()
             else:
                 print("** instance id missing **")
         elif args[0] == "":

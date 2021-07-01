@@ -34,6 +34,7 @@ class BaseModel:
             self.created_at = datetime.utcnow()
             self.updated_at = self.created_at
             models.storage.new(self)
+            models.storage.save()
 
     def __str__(self):
         """print formated string"""
