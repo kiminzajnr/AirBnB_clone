@@ -37,7 +37,6 @@ class HBNBCommand(cmd.Cmd):
         args = line.split(" ")
         if args[0] == "BaseModel":
             bm = BaseModel()
-            bm.save()
             print(bm.id)
         elif args[0] == "":
             print("** class name missing **")
@@ -74,10 +73,8 @@ class HBNBCommand(cmd.Cmd):
         if args[0] == "BaseModel":
             if len(args) > 1:
                 key = args[0] + "." + args[1]
-                if key in storage.all():
-                    storage.all().pop(key)
-                    storage.save()
-                else:
+                objs_dict = storage.all()
+                if objs_dict.pop(key, None) is None:
                     print("** no instance found **")
             else:
                 print("** instance id missing **")

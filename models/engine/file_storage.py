@@ -2,7 +2,6 @@
 """A storage moudle.
 """
 import json
-import models
 
 
 class FileStorage:
@@ -13,25 +12,24 @@ class FileStorage:
     __objects = {}
 
     def all(self):
-        """Return the dictionary objects
+        """Return the dictionary __objects
         """
-        obj_dict = {}
-        for key in __class__.__objects.keys():
-            obj = __class__.__objects[key]
-            obj_dict[key] = models.base_model.BaseModel(**obj)
-        return obj_dict
+        return __class__.__objects
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id
         """
-        key = obj["__class__"] + "." + obj["id"]
+        key = obj.__class__.__name__ + "." + obj.id
         __class__.__objects[key] = obj
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)
         """
+        dict_objs = {}
+        for key in __class__.__objects:
+            dict_objs[key] = __class__.__objects[key].to_dict()
         with open(__class__.__file_path, "w") as wr:
-            json.dump(__class__.__objects, wr)
+            json.dump(dict_objs, wr)
 
     def reload(self):
         """Deserializes the JSON file to __objects. only if the
@@ -40,6 +38,9 @@ class FileStorage:
         """
         try:
             with open(__class__.__file_path) as rd:
-                __class__.__objects = json.load(rd)
+                from models.base_model import BaseModel
+                dict_objs = json.load(rd)
+                for key in dict_objs:
+                    __class__.__objects[key] = BaseModel(**dict_objs[key])
         except FileNotFoundError:
             pass
