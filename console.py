@@ -74,10 +74,11 @@ class HBNBCommand(cmd.Cmd):
         if args[0] == "BaseModel":
             if len(args) > 1:
                 key = args[0] + "." + args[1]
-                if (storage.all()).pop(key, None) is None:
-                    print("** no instance found **")
+                if key in storage.all():
+                    storage.all().pop(key)
+                    storage.save()
                 else:
-                    models.base_model.storage.all()[key].save()
+                    print("** no instance found **")
             else:
                 print("** instance id missing **")
         elif args[0] == "":
