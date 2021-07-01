@@ -16,16 +16,17 @@ class FileStorage:
         """Return the dictionary objects
         """
         obj_dict = {}
-        for key in __class__.__objects.keys():
+        for key in self.__objects.keys():
             obj = __class__.__objects[key]
             obj_dict[key] = models.base_model.BaseModel(**obj)
+            obj_dict[key] = models.user.User(**obj)
         return obj_dict
 
     def new(self, obj):
         """Sets in __objects the obj with key <obj class name>.id
         """
         key = obj["__class__"] + "." + obj["id"]
-        __class__.__objects[key] = obj
+        self.__objects[key] = obj
 
     def save(self):
         """Serializes __objects to the JSON file (path: __file_path)
