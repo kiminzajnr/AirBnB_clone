@@ -1,5 +1,8 @@
 # AirBnB_clone
 
+![Air_BnB_clone logo](img/air_bnb_clone.png)
+
+---
 # Console
 
 A python command interpreter program built using the python module cmd. Contains to create, update, delete and print a class instance or all instaces created.
@@ -40,10 +43,19 @@ b61e46d6-9143-4d37-b271-ce76a759d6a6
 ["[BaseModel] (b61e46d6-9143-4d37-b271-ce76a759d6a6) {'id': 'b61e46d6-9143-4d37-b271-ce76a759d6a6', 'created_at': datetime.datetime(2021, 6, 30, 11, 34, 53, 117968), 'updated_at': datetime.datetime(2021, 6, 30, 14, 34, 53, 118060)}", "[BaseModel] (426aea0f-5012-4a52-9a3a-3c775ff98e07) {'id': '426aea0f-5012-4a52-9a3a-3c775ff98e07', 'created_at': datetime.datetime(2021, 6, 30, 13, 29, 6, 1369), 'updated_at': datetime.datetime(2021, 6, 30, 13, 29, 6, 1383)}"]
 ```
 
+---
 ## Contributing
 Pull requests are welcome.
 
+---
 Please make sure to update tests as appropriate.
 
+---
 ## License
 This software is open-source.
+
+---
+## Authors
+
+Alazar Desta   <alazaronemail@gmail.com>
+Erick Kiminza  [https://twitter.com/e_kiminza?lang=en]
