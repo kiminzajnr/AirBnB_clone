@@ -4,6 +4,7 @@
 import cmd
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -37,6 +38,9 @@ class HBNBCommand(cmd.Cmd):
         if args[0] == "BaseModel":
             bm = BaseModel()
             print(bm.id)
+        elif args[0] == "User":
+            usr = User()
+            print(usr.id)
         elif args[0] == "":
             print("** class name missing **")
         else:
@@ -47,7 +51,7 @@ class HBNBCommand(cmd.Cmd):
         name and id.
         """
         args = line.split(" ")
-        if args[0] == "BaseModel":
+        if args[0] == "BaseModel" or args[0] == "User":
             if len(args) > 1:
                 key = args[0] + "." + args[1]
                 all_objs = storage.all()
@@ -69,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         into the JSON file).
         """
         args = line.split(" ")
-        if args[0] == "BaseModel":
+        if args[0] == "BaseModel" or args[0] == "User":
             if len(args) > 1:
                 key = args[0] + "." + args[1]
                 objs_dict = storage.all()
@@ -89,11 +93,12 @@ class HBNBCommand(cmd.Cmd):
         not on the class name.
         """
         args = line.split(" ")
-        if args == [''] or args[0] == "BaseModel":
+        if args == [''] or args[0] == "BaseModel" or args[0] == "User":
             str_obj = []
             all_objs = storage.all()
             for obj_key in all_objs.keys():
-                str_obj.append(str(all_objs[obj_key]))
+                if args == [''] or obj_key.split(".")[0] == args[0]:
+                    str_obj.append(str(all_objs[obj_key]))
             print(str_obj)
         else:
             print("** class doesn't exist **")
@@ -105,7 +110,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split(" ")
         if args[0] == "":
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] != "BaseModel" and args[0] != "User":
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
