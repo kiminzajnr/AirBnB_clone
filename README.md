@@ -47,7 +47,6 @@ b61e46d6-9143-4d37-b271-ce76a759d6a6
 ## Contributing
 Pull requests are welcome.
 
----
 Please make sure to update tests as appropriate.
 
 ---
@@ -59,3 +58,4 @@ This software is open-source.
 
 Alazar Desta <alazaronemail@gmail.com>
 Erick Kiminza <kiminzaeric@gmail.com>
+
