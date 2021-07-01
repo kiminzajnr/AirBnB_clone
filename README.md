@@ -1,4 +1,4 @@
-# AirBnB_clone
+# AirBnB_clone (The Holberton B&B)
 
 ![Air_BnB_clone logo](img/air_bnb_clone.png)
 
