@@ -5,13 +5,17 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
-
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """Command iterpreter public class which inherites from base class cmd.
     """
     prompt = '(hbnb) '
-
+    cls = ["BaseModel", "User", "State", "City", "Amenity", "Place", "Review"]
     def do_quit(self, line):
         """Quit command to exit the program
         """
@@ -35,23 +39,33 @@ class HBNBCommand(cmd.Cmd):
         and prints the id.
         """
         args = line.split(" ")
-        if args[0] == "BaseModel":
-            bm = BaseModel()
-            print(bm.id)
-        elif args[0] == "User":
-            usr = User()
-            print(usr.id)
-        elif args[0] == "":
+        if args[0] == "":
             print("** class name missing **")
-        else:
+        elif not args[0] in cls:
             print("** class doesn't exist **")
+        else:
+            if args[0] == "BaseModel":
+                inst = BaseModel()
+            elif args[0] == "User":
+                inst = User()
+            elif args[0] == "state":
+                inst = State()
+            elif args[0] == "city":
+                inst = City()
+            elif args[0] == "Amenity":
+                inst = amenity()
+            elif args[0] == "Place":
+                inst = place()
+            elif args[0] == "Review":
+                inst = review()
+            print(inst.id)
 
     def do_show(self, line):
         """Prints the string representation of an instance based on the class
         name and id.
         """
         args = line.split(" ")
-        if args[0] == "BaseModel" or args[0] == "User":
+        if args[0] in cls:
             if len(args) > 1:
                 key = args[0] + "." + args[1]
                 all_objs = storage.all()
@@ -73,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         into the JSON file).
         """
         args = line.split(" ")
-        if args[0] == "BaseModel" or args[0] == "User":
+        if args[0] in cls:
             if len(args) > 1:
                 key = args[0] + "." + args[1]
                 objs_dict = storage.all()
@@ -93,7 +107,7 @@ class HBNBCommand(cmd.Cmd):
         not on the class name.
         """
         args = line.split(" ")
-        if args == [''] or args[0] == "BaseModel" or args[0] == "User":
+        if args[0] in cls:
             str_obj = []
             all_objs = storage.all()
             for obj_key in all_objs.keys():
@@ -110,7 +124,7 @@ class HBNBCommand(cmd.Cmd):
         args = line.split(" ")
         if args[0] == "":
             print("** class name missing **")
-        elif args[0] != "BaseModel" and args[0] != "User":
+        elif not args[0] in cls:
             print("** class doesn't exist **")
         elif len(args) == 1:
             print("** instance id missing **")
