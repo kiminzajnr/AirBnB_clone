@@ -58,4 +58,4 @@ This software is open-source.
 ## Authors
 
 Alazar Desta <alazaronemail@gmail.com>
-[Erick Kiminza] (https://twitter.com/e_kiminza?lang=en)
+Erick Kiminza <kiminzaeric@gmail.com>
