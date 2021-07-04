@@ -7,6 +7,19 @@
 
 A python command interpreter program built using the python module cmd. Contains to create, update, delete and print a class instance or all instaces created.
 
+## Getting Started
+To start the command interpreter type in these commands in your terminal:
+
+```bash
+Cloning the repo and starting the console:
+==========================================
+
+git clone https://github.com/alazar-des/AirBnB_clone.git
+cd AirBnB_clone
+./console.py
+```
+
+---
 ## Usage
 Help for the console program can be obtained by running the program first and with the help command. This will show the available commands:
 
@@ -56,6 +69,6 @@ This software is open-source.
 ---
 ## Authors
 
-Alazar Desta <alazaronemail@gmail.com>
-Erick Kiminza <kiminzaeric@gmail.com>
+- Alazar Desta <alazaronemail@gmail.com>
+- [Erick Kiminza](https://twitter.com/e_kiminza?lang=en).
 
